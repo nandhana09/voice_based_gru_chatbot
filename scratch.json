@@ -1,0 +1,639 @@
+{
+    "intents":[
+      {
+         "tag": "greeting",
+    "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Whats up"],
+    "responses": ["Hi"]
+    
+   },
+   {"tag": "goodbye",
+    "patterns": ["cya", "See you later", "Goodbye", "I am Leaving", "Have a Good day","bye"],
+    "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"]
+    
+   },
+    {
+      "tag": "what_is_breast_cancer",
+      "patterns": [
+        "What is breast cancer?",
+        "Define breast cancer",
+        "Tell me about breast cancer"
+      ],
+      "responses": [
+        "Breast cancer is a type of cancer that forms in the cells of the breast. It can occur in both men and women, but it is far more common in women."
+      ]
+      
+    },
+    {
+      "tag": "risk_factors_for_breast_cancer",
+      "patterns": [
+        "What are the risk factors for breast cancer?",
+        "Who is at risk for breast cancer?",
+        "Causes of breast cancer"
+      ],
+      "responses": [
+        "Risk factors for breast cancer include age, family history, genetic mutations (BRCA1 and BRCA2), hormonal factors, alcohol consumption, obesity, and lack of physical activity."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_commonality",
+      "patterns": [
+        "How common is breast cancer?",
+        "Is breast cancer a common disease?",
+        "Prevalence of breast cancer"
+      ],
+      "responses": [
+        "Breast cancer is the most common cancer in women worldwide, with millions of cases diagnosed each year."
+      ]
+      
+    },
+    {
+      "tag": "men_breast_cancer",
+      "patterns": [
+        "Can men get breast cancer?",
+        "Is it possible for men to have breast cancer?",
+        "Do men suffer from breast cancer?"
+      ],
+      "responses": [
+        "Yes, men can get breast cancer, although it is much less common than in women."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_symptoms",
+      "patterns": [
+        "What are the symptoms of breast cancer?",
+        "Signs of breast cancer",
+        "How can I identify breast cancer?"
+      ],
+      "responses": [
+        "Symptoms of breast cancer may include a lump or mass in the breast, changes in breast size or shape, nipple discharge, skin changes on the breast, and breast pain."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_diagnosis",
+      "patterns": [
+        "How is breast cancer diagnosed?",
+        "What are the methods to diagnose breast cancer?",
+        "Diagnosis of breast cancer"
+      ],
+      "responses": [
+        "Breast cancer is diagnosed through a combination of imaging tests (such as mammograms and ultrasounds) and biopsies (removing a sample of tissue for examination)."
+      ]
+      
+    },
+    {
+      "tag": "what_is_a_mammogram",
+      "patterns": [
+        "What is a mammogram?",
+        "Define mammogram",
+        "Explain mammogram"
+      ],
+      "responses": [
+        "A mammogram is an X-ray of the breast used to detect and diagnose breast cancer. It is an important screening tool for early detection."
+      ]
+      
+    },
+    {
+      "tag": "mammogram_frequency",
+      "patterns": [
+        "How often should I get a mammogram?",
+        "Mammogram schedule",
+        "Frequency of mammograms"
+      ],
+      "responses": [
+        "The recommended frequency for mammograms varies depending on factors such as age and risk factors. Generally, women should start regular mammograms at age 40 and continue annually or as recommended by their healthcare provider."
+      ]
+      
+    },
+    {
+      "tag": "breast_self_examination",
+      "patterns": [
+        "What is breast self-examination?",
+        "Define BSE",
+        "How to do breast self-check?"
+      ],
+      "responses": [
+        "Breast self-examination is a technique used by women to check their breasts for any abnormalities or changes. It involves feeling the breasts for lumps or changes in texture."
+      ]
+      
+    },
+    {
+      "tag": "performing_breast_self_exam",
+      "patterns": [
+        "How can I perform a breast self-exam?",
+        "Steps for breast self-examination",
+        "Guide to performing BSE"
+      ],
+      "responses": [
+        "To perform a breast self-exam, stand in front of a mirror and visually inspect your breasts for changes in size, shape, or skin texture. Then, lie down and use your fingers to feel for lumps or abnormalities in each breast and underarm area."
+      ]
+      
+    },
+    {
+      "tag": "breast_lumps_cancerous",
+      "patterns": [
+        "Are all breast lumps cancerous?",
+        "Is every lump in breast cancer?",
+        "Do all breast lumps mean cancer?"
+      ],
+      "responses": [
+        "No, not all breast lumps are cancerous. Many breast lumps are benign (non-cancerous) and may be caused by hormonal changes, cysts, or other conditions."
+      ]
+      
+    },
+    {
+      "tag": "finding_breast_lump",
+      "patterns": [
+        "What should I do if I find a lump in my breast?",
+        "Found a lump in breast, what to do?",
+        "Steps after discovering breast lump"
+      ],
+      "responses": [
+        "If you find a lump or any other changes in your breast, it's important to see your healthcare provider for further evaluation. They may recommend imaging tests or a biopsy to determine the cause of the lump."
+      ]
+      
+    },
+    {
+      "tag": "breastfeeding_reduce_cancer_risk",
+      "patterns": [
+        "Can breastfeeding reduce the risk of breast cancer?",
+        "Does breastfeeding lower breast cancer risk?",
+        "Breastfeeding and breast cancer risk"
+      ],
+      "responses": [
+        "Yes, breastfeeding has been associated with a reduced risk of breast cancer. The longer a woman breastfeeds, the greater the protective effect may be."
+      ]
+      
+    },
+    {
+      "tag": "stages_of_breast_cancer",
+      "patterns": [
+        "What are the different stages of breast cancer?",
+        "Breast cancer stages explained",
+        "Staging of breast cancer"
+      ],
+      "responses": [
+        "Breast cancer is staged based on the size of the tumor, whether it has spread to lymph nodes or other parts of the body, and other factors. Stages range from 0 (early, non-invasive) to IV (advanced, metastatic)."
+      ]
+      
+    },
+    {
+      "tag": "metastatic_breast_cancer",
+      "patterns": [
+        "What is metastatic breast cancer?",
+        "Define stage IV breast cancer",
+        "Explanation of metastatic breast cancer"
+      ],
+      "responses": [
+        "Metastatic breast cancer, also known as stage IV breast cancer, is breast cancer that has spread beyond the breast and nearby lymph nodes to other parts of the body, such as the bones, lungs, liver, or brain."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_treatment",
+      "patterns": [
+        "How is breast cancer treated?",
+        "Treatment options for breast cancer",
+        "Breast cancer treatment methods"
+      ],
+      "responses": [
+        "Treatment for breast cancer depends on factors such as the stage of the cancer, the type of breast cancer, and the patient's overall health. Treatments may include surgery, chemotherapy, radiation therapy, hormone therapy, targeted therapy, and immunotherapy."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_treatment_side_effects",
+      "patterns": [
+        "What are the side effects of breast cancer treatment?",
+        "Side effects from treating breast cancer",
+        "Breast cancer treatment and side effects"
+      ],
+      "responses": [
+        "Side effects of breast cancer treatment can vary depending on the type of treatment and the individual patient. Common side effects may include fatigue, nausea, hair loss, changes in appetite, and emotional distress."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_cure",
+      "patterns": [
+        "Can breast cancer be cured?",
+        "Is there a cure for breast cancer?",
+        "Curing breast cancer"
+      ],
+      "responses": [
+        "In many cases, breast cancer can be treated successfully, especially if it is diagnosed early. However, the outlook for each individual depends on factors such as the stage of the cancer, the type of breast cancer, and the effectiveness of treatment."
+      ]
+      
+    },
+    {
+      "tag": "hormone_receptor_positive_breast_cancer",
+      "patterns": [
+        "What is hormone receptor-positive breast cancer?",
+        "Define hormone receptor-positive cancer",
+        "Hormone sensitive breast cancer"
+      ],
+      "responses": [
+        "Hormone receptor-positive breast cancer is a type of breast cancer that grows in response to the hormones estrogen and/or progesterone. It can be treated with hormone therapy to block the effects of these hormones."
+      ]
+      
+    },
+    {
+      "tag": "triple_negative_breast_cancer",
+      "patterns": [
+        "What is triple-negative breast cancer?",
+        "Define triple-negative breast cancer",
+        "Triple-negative cancer explanation"
+      ],
+      "responses": [
+        "Triple-negative breast cancer is a type of breast cancer that does not have receptors for the hormones estrogen or progesterone, nor does it have excess HER2 protein. It tends to be more aggressive and harder to treat than other types of breast cancer."
+      ]
+      
+    },
+    {
+      "tag": "her2_positive_breast_cancer",
+      "patterns": [
+        "What is HER2-positive breast cancer?",
+        "Define HER2-positive breast cancer",
+        "HER2-positive cancer explanation"
+      ],
+      "responses": [
+        "HER2-positive breast cancer is a type of breast cancer that has excess HER2 protein on the surface of the cancer cells. It can be treated with targeted therapies that specifically target HER2-positive cells."
+      ]
+      
+    },
+    {
+      "tag": "lifestyle_factors_and_breast_cancer",
+      "patterns": [
+        "Can lifestyle factors affect the risk of breast cancer?",
+        "Do lifestyle choices impact breast cancer risk?",
+        "Lifestyle and breast cancer risk"
+      ],
+      "responses": [
+        "Yes, certain lifestyle factors can affect the risk of breast cancer. Maintaining a healthy weight, being physically active, limiting alcohol consumption, and avoiding tobacco can help reduce the risk of breast cancer."
+      ]
+      
+    },
+    {
+      "tag": "genetic_testing_for_breast_cancer",
+      "patterns": [
+        "Is there a genetic test for breast cancer?",
+        "Can I get tested for breast cancer genes?",
+        "Genetic testing for BRCA1 and BRCA2"
+      ],
+      "responses": [
+        "Yes, genetic testing can be performed to identify mutations in genes such as BRCA1 and BRCA2, which are associated with an increased risk of breast and ovarian cancer."
+      ]
+      
+    },
+    {
+      "tag": "what_is_lumpectomy",
+      "patterns": [
+        "What is a lumpectomy?",
+        "Define lumpectomy",
+        "Lumpectomy explanation"
+      ],
+      "responses": [
+        "A lumpectomy is a surgical procedure to remove the tumor and a small margin of surrounding tissue from the breast while preserving the breast as much as possible. It is often performed as part of breast-conserving therapy for early-stage breast cancer."
+      ]
+      
+    },
+    {
+      "tag": "what_is_mastectomy",
+      "patterns": [
+        "What is a mastectomy?",
+        "Define mastectomy",
+        "Mastectomy explanation"
+      ],
+      "responses": [
+        "A mastectomy is a surgical procedure to remove the entire breast. It may be performed as a treatment for breast cancer or as a preventive measure in women at high risk of developing breast cancer."
+      ]
+      
+    },
+    {
+      "tag": "breast_reconstruction_surgery",
+      "patterns": [
+        "What is breast reconstruction surgery?",
+        "Define breast reconstruction",
+        "Breast reconstruction post-mastectomy"
+      ],
+      "responses": [
+        "Breast reconstruction surgery is a procedure to rebuild the shape and appearance of the breast following mastectomy or lumpectomy. It can be performed using implants or tissue from other parts of the body."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_recurrence",
+      "patterns": [
+        "Can breast cancer recur after treatment?",
+        "Is it possible for breast cancer to come back?",
+        "Breast cancer recurrence"
+      ],
+      "responses": [
+        "Yes, breast cancer can recur (come back) after treatment, even if it has been successfully treated initially. Regular follow-up care and monitoring are important to detect and treat any recurrence early."
+      ]
+      
+    },
+    {
+      "tag": "adjuvant_therapy",
+      "patterns": [
+        "What is adjuvant therapy?",
+        "Define adjuvant therapy",
+        "Purpose of adjuvant therapy in breast cancer"
+      ],
+      "responses": [
+        "Adjuvant therapy is additional treatment given after the primary treatment (such as surgery) to lower the risk of the cancer coming back. It may include chemotherapy, radiation therapy, hormone therapy, or targeted therapy."
+      ]
+      
+    },
+    {
+      "tag": "neoadjuvant_therapy",
+      "patterns": [
+        "What is neoadjuvant therapy?",
+        "Define neoadjuvant therapy",
+        "Purpose of neoadjuvant therapy in breast cancer"
+      ],
+      "responses": [
+        "Neoadjuvant therapy is treatment given before the primary treatment (such as surgery) to shrink the tumor and make it easier to remove. It may include chemotherapy, hormone therapy, or targeted therapy."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_prognosis",
+      "patterns": [
+        "What is the prognosis for breast cancer?",
+        "Breast cancer prognosis factors",
+        "Outlook for breast cancer patients"
+      ],
+      "responses": [
+        "The prognosis for breast cancer depends on factors such as the stage of the cancer, the type of breast cancer, the patient's overall health, and the effectiveness of treatment. With early detection and appropriate treatment, many women with breast cancer can have a good prognosis."
+      ]
+      
+    },
+    {
+      "tag": "stress_and_breast_cancer",
+      "patterns": [
+        "Can stress cause breast cancer?",
+        "Does stress lead to breast cancer?",
+        "Relationship between stress and breast cancer"
+      ],
+      "responses": [
+        "While stress may not directly cause breast cancer, it can affect lifestyle factors such as diet, exercise, and sleep, which may indirectly impact the risk of developing breast cancer."
+      ]
+      
+    },
+    {
+      "tag": "diet_to_reduce_breast_cancer_risk",
+      "patterns": [
+        "What should I eat to reduce my risk of breast cancer?",
+        "Diet to lower breast cancer risk",
+        "Foods to eat for reducing breast cancer risk"
+      ],
+      "responses": [
+        "Eating a balanced diet rich in fruits, vegetables, whole grains, lean protein, and healthy fats can help reduce the risk of breast cancer. Limiting processed foods, sugary drinks, and red meat may also be beneficial."
+      ]
+      
+    },
+    {
+      "tag": "alcohol_and_breast_cancer_risk",
+      "patterns": [
+        "Can alcohol increase the risk of breast cancer?",
+        "Alcohol consumption and breast cancer",
+        "Does drinking alcohol raise breast cancer risk?"
+      ],
+      "responses": [
+        "Yes, alcohol consumption has been linked to an increased risk of breast cancer. Limiting alcohol intake or avoiding it altogether may help reduce the risk."
+      ]
+      
+    },
+    {
+      "tag": "benign_vs_malignant_lumps",
+      "patterns": [
+        "What is the difference between a benign and malignant breast lump?",
+        "Benign versus malignant breast lumps",
+        "How to tell if a breast lump is benign or malignant?"
+      ],
+      "responses": [
+        "A benign breast lump is non-cancerous and does not spread to other parts of the body. A malignant breast lump is cancerous and has the potential to grow and spread to other tissues and organs."
+      ]
+      
+    },
+    {
+      "tag": "supporting_someone_with_breast_cancer",
+      "patterns": [
+        "How can I support someone with breast cancer?",
+        "Ways to support a breast cancer patient",
+        "Supporting a friend or family member with breast cancer"
+      ],
+      "responses": [
+        "Supporting someone with breast cancer involves offering emotional support, helping with practical tasks, accompanying them to appointments, and being a good listener. It's important to respect their autonomy and offer support in ways that are meaningful to them."
+      ]
+      
+    },
+    {
+      "tag": "what_is_lymphedema",
+      "patterns": [
+        "What is lymphedema?",
+        "Define lymphedema",
+        "Lymphedema explanation"
+      ],
+      "responses": [
+        "Lymphedema is swelling that occurs when lymph fluid builds up in the soft tissues of the body, usually in an arm or leg. It can occur as a result of damage to the lymphatic system, such as from surgery or radiation therapy for breast cancer."
+      ]
+      
+    },
+    {
+      "tag": "reducing_lymphedema_risk",
+      "patterns": [
+        "How can I reduce the risk of lymphedema after breast cancer treatment?",
+        "Preventing lymphedema post-breast cancer",
+        "Measures to prevent lymphedema after treatment"
+      ],
+      "responses": [
+        "To reduce the risk of lymphedema after breast cancer treatment, avoid trauma or injury to the affected area, practice good skin care, avoid extreme temperatures, wear compression garments if recommended, and perform gentle exercises to promote lymphatic flow."
+      ]
+      
+    },
+    {
+      "tag": "survivorship_care",
+      "patterns": [
+        "What is survivorship care?",
+        "Define survivorship care",
+        "Survivorship care for cancer patients"
+      ],
+      "responses": [
+        "Survivorship care refers to the ongoing medical care and support provided to cancer survivors after they have completed their primary treatment. It focuses on monitoring for recurrence, managing late effects of treatment, promoting healthy lifestyle behaviors, and addressing psychosocial needs."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_metastasis",
+      "patterns": [
+        "Can breast cancer spread to other parts of the body?",
+        "Does breast cancer metastasize?",
+        "Breast cancer spreading to other areas"
+      ],
+      "responses": [
+        "Yes, breast cancer can spread (metastasize) to other parts of the body, such as the bones, lungs, liver, or brain, through the lymphatic system or bloodstream."
+      ]
+      
+    },
+    {
+      "tag": "role_of_medical_oncologist",
+      "patterns": [
+        "What is the role of a medical oncologist in breast cancer treatment?",
+        "Define the work of a medical oncologist",
+        "Medical oncologist's role in treating breast cancer"
+      ],
+      "responses": [
+        "A medical oncologist is a doctor who specializes in diagnosing and treating cancer using chemotherapy, targeted therapy, immunotherapy, and other systemic treatments. They play a key role in developing a treatment plan tailored to the individual patient's needs."
+      ]
+      
+    },
+    {
+      "tag": "role_of_radiation_oncologist",
+      "patterns": [
+        "What is the role of a radiation oncologist in breast cancer treatment?",
+        "Role of radiation oncologist",
+        "Radiation oncologist responsibilities"
+      ],
+      "responses": [
+        "A radiation oncologist is a doctor who specializes in using radiation therapy to treat cancer. They work closely with other members of the healthcare team to develop a radiation treatment plan that targets the cancer while minimizing damage to surrounding healthy tissues."
+      ]
+      
+    },
+    {
+      "tag": "role_of_surgical_oncologist",
+      "patterns": [
+        "What is the role of a surgical oncologist in breast cancer treatment?",
+        "Role of surgical oncologist",
+        "Surgical oncologist responsibilities"
+      ],
+      "responses": [
+        "A surgical oncologist is a doctor who specializes in performing surgical procedures to diagnose, stage, and treat cancer. They may perform biopsies, lumpectomies, mastectomies, and other surgical procedures as part of breast cancer treatment."
+      ]
+      
+    },
+    {
+      "tag": "role_of_reconstructive_surgeon",
+      "patterns": [
+        "What is the role of a reconstructive surgeon in breast cancer treatment?",
+        "Role of reconstructive surgeon",
+        "Reconstructive surgeon responsibilities"
+      ],
+      "responses": [
+        "A reconstructive surgeon is a doctor who specializes in rebuilding and restoring the appearance of the breast following mastectomy or lumpectomy. They work closely with the surgical oncologist to discuss reconstructive options and provide support throughout the reconstruction process."
+      ]
+      
+    },
+    {
+      "tag": "role_of_genetic_counselor",
+      "patterns": [
+        "What is the role of a genetic counselor in breast cancer treatment?",
+        "Role of genetic counselor",
+        "Genetic counselor responsibilities"
+      ],
+      "responses": [
+        "A genetic counselor is a healthcare professional who specializes in assessing the risk of inherited genetic conditions, including those associated with breast cancer. They provide genetic counseling, risk assessment, and genetic testing recommendations to individuals and families affected by hereditary cancer syndromes."
+      ]
+      
+    },
+    {
+      "tag": "role_of_nurse_navigator",
+      "patterns": [
+        "What is the role of a nurse navigator in breast cancer treatment?",
+        "Role of nurse navigator",
+        "Nurse navigator responsibilities"
+      ],
+      "responses": [
+        "A nurse navigator is a registered nurse who provides personalized guidance, support, and coordination of care to patients and their families throughout the cancer treatment journey. They help navigate the healthcare system, coordinate appointments, provide education, and address concerns and questions."
+      ]
+      
+    },
+    {
+      "tag": "role_of_social_worker",
+      "patterns": [
+        "What is the role of a social worker in breast cancer treatment?",
+        "Role of social worker",
+        "Social worker responsibilities"
+      ],
+      "responses": [
+        "A social worker is a trained professional who provides emotional support, counseling, and practical assistance to patients and families coping with the challenges of breast cancer diagnosis and treatment. They can help connect individuals with resources and support services in the community."
+      ]
+      
+    },
+    {
+      "tag": "breast_cancer_prevention",
+      "patterns": [
+        "Can breast cancer be prevented?",
+        "How to prevent breast cancer?",
+        "Preventing breast cancer"
+      ],
+      "responses": [
+        "While it's not always possible to prevent breast cancer, there are steps you can take to reduce your risk, such as maintaining a healthy lifestyle, limiting alcohol consumption, staying physically active, and avoiding exposure to known carcinogens."
+      ]
+      
+    },
+    {
+      "tag": "dcis_vs_invasive_breast_cancer",
+      "patterns": [
+        "What is the difference between DCIS and invasive breast cancer?",
+        "DCIS versus invasive cancer",
+        "Differences between DCIS and invasive breast cancer"
+      ],
+      "responses": [
+        "Ductal carcinoma in situ (DCIS) is a non-invasive form of breast cancer that starts in the milk ducts and has not spread beyond the ducts into surrounding breast tissue. Invasive breast cancer, also known as infiltrating breast cancer, has spread beyond the ducts or lobules into surrounding breast tissue."
+      ]
+      
+    },
+    {
+      "tag": "role_of_hormone_therapy",
+      "patterns": [
+        "What is the role of hormone therapy in breast cancer treatment?",
+        "Role of hormone therapy",
+        "Hormone therapy for breast cancer"
+      ],
+      "responses": [
+        "Hormone therapy is a treatment for hormone receptor-positive breast cancer that blocks the effects of estrogen and/or progesterone on cancer cells. It may be used alone or in combination with other treatments to reduce the risk of recurrence and improve outcomes."
+      ]
+      
+    },
+    {
+      "tag": "role_of_chemotherapy",
+      "patterns": [
+        "What is the role of chemotherapy in breast cancer treatment?",
+        "Role of chemotherapy",
+        "Chemotherapy for breast cancer"
+      ],
+      "responses": [
+        "Chemotherapy is a systemic treatment for breast cancer that uses drugs to kill cancer cells or stop them from growing. It may be used before surgery (neoadjuvant chemotherapy) to shrink the tumor, after surgery (adjuvant chemotherapy) to kill any remaining cancer cells, or to treat advanced or metastatic breast cancer."
+      ]
+      
+    },
+    {
+      "tag": "role_of_targeted_therapy",
+      "patterns": [
+        "What is the role of targeted therapy in breast cancer treatment?",
+        "Role of targeted therapy",
+        "Targeted therapy for breast cancer"
+      ],
+      "responses": [
+        "Targeted therapy is a type of cancer treatment that targets specific molecules or pathways involved in the growth and spread of cancer cells. It may be used to treat HER2-positive breast cancer or other types of breast cancer with specific molecular targets."
+      ]
+      
+    },
+    {
+      "tag": "role_of_immunotherapy",
+      "patterns": [
+        "What is the role of immunotherapy in breast cancer treatment?",
+        "Role of immunotherapy",
+        "Immunotherapy for breast cancer"
+      ],
+      "responses": [
+        "Immunotherapy is a type of cancer treatment that uses the body's immune system to identify and destroy cancer cells. It may be used to treat certain types of breast cancer, particularly triple-negative breast cancer, in combination with other treatments."
+      ]
+      
+    }
+]
+}
