@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatBot</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #6a5acd, #ffffff);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to bottom right, #ffffff, #6a5acd);
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .chat {
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            color: #333;
+            background-color: #f0f0f0;
+        }
+
+        .user {
+            text-align: right;
+        }
+
+        .bot {
+            text-align: left;
+        }
+
+        .input-container {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 70px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            outline: none;
+        }
+
+        button {
+            width: 70px;
+            padding: 10px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            color: #fff;
+            background-color: #6a5acd;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4b0082;
+        }
+
+        #audio-player {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ChatBot</h1>
+        <div id="chat-history" class="chat">
+            <!-- Chat history will be inserted here -->
+        </div>
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="You" autocomplete="off">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+        <audio id="audio-player" controls></audio>
+    </div>
+
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById('user-input').value.trim();
+            if (userInput === '') return;
+
+            console.log('User Input:', userInput);
+
+            appendMessage('user', userInput);
+
+            // Send user input to server
+            fetch('/process_text', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'user_input=' + userInput,
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Server Response:', data);
+                appendMessage('bot', data.bot_response);
+                playAudio(data.audio);
+            })
+            .catch(error => {
+                console.error('Error fetching or parsing response:', error);
+            });
+
+            document.getElementById('user-input').value = '';
+        }
+
+        function appendMessage(sender, message) {
+            var chatHistory = document.getElementById('chat-history');
+            var messageElement = document.createElement('div');
+            messageElement.classList.add('chat', sender);
+            messageElement.innerText = message;
+            chatHistory.appendChild(messageElement);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        function playAudio(audioData) {
+            console.log('Received Audio Data:', audioData);
+            var audioPlayer = document.getElementById('audio-player');
+            audioPlayer.src = 'data:audio/mp3;base64,' + audioData;
+            audioPlayer.play();
+        }
+    </script>
+</body>
+</html>

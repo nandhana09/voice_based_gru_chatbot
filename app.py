@@ -10,12 +10,12 @@ from gtts import gTTS
 import io
 
 # Load data
-with open("scratch.json") as file:
+with open(r'E:\new\dataset\voicebot.json') as file:
     data = json.load(file)
 
 # Load trained model
-model = keras.models.load_model('history_gru')
-
+model = keras.models.load_model(r'E:\new\models\voicebot4.0_gru')
+ 
 # Load tokenizer object
 with open('tokenizer.pickle', 'rb') as handle:
     tokenizer = pickle.load(handle)

@@ -3,14 +3,14 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Embedding, GRU, GlobalAveragePooling1D
+from tensorflow.keras.layers import Dense, Embedding, LSTM, GlobalAveragePooling1D
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.preprocessing import LabelEncoder
 import pickle
 
 # Load data from JSON file
-with open('scratch.json') as file:
+with open('voicebot.json') as file:
     data = json.load(file)
 
 # Extract training sentences, labels, and responses
@@ -51,7 +51,7 @@ num_classes = len(labels)
 # Build model architecture
 model = Sequential()
 model.add(Embedding(vocab_size, embedding_dim, input_length=max_len))
-model.add(GRU(32, return_sequences=True))  # Add GRU layer with 32 units
+model.add(LSTM(32, return_sequences=True))  # LSTM layer with 32 units
 model.add(GlobalAveragePooling1D())
 model.add(Dense(16, activation='relu'))
 model.add(Dense(num_classes, activation='softmax'))
@@ -63,11 +63,11 @@ model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=
 model.summary()
 
 # Train model
-epochs = 500
+epochs = 1000
 history = model.fit(padded_sequences, np.array(training_labels), epochs=epochs)
 
 # Save the trained model
-model.save("history_gru")
+model.save("voicebot4.0_lstm")
 
 # Save the fitted tokenizer
 with open('tokenizer.pickle', 'wb') as handle:
