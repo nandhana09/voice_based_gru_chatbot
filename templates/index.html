@@ -52,10 +52,12 @@
 
         .input-container {
             margin-top: 20px;
+            display: flex;
+            align-items: center;
         }
 
         input[type="text"] {
-            width: calc(100% - 70px);
+            flex: 1;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px 0 0 5px;
@@ -63,7 +65,6 @@
         }
 
         button {
-            width: 70px;
             padding: 10px;
             border: none;
             border-radius: 0 5px 5px 0;
@@ -76,6 +77,11 @@
         button:hover {
             background-color: #4b0082;
         }
+
+        #record-btn {
+            margin-left: 10px;
+            background-color: #4caf50;
+        }
     </style>
 </head>
 <body>
@@ -87,11 +93,9 @@
         <div class="input-container">
             <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
             <button onclick="sendMessage()">Send</button>
+            <button id="record-btn" onclick="startRecording()">Record Voice</button>
         </div>
-        <div class="input-container">
-            <button id="record-btn" onclick="startRecording()">Record</button>
-            <audio id="audio-response" controls hidden></audio>
-        </div>
+        <audio id="audio-response" controls hidden></audio>
     </div>
 
     <script>
@@ -99,11 +103,8 @@
             var userInput = document.getElementById('user-input').value.trim();
             if (userInput === '') return;
 
-            console.log('User Input:', userInput);
-
             appendMessage('user', userInput);
 
-            // Send user input to server
             fetch('/process_text', {
                 method: 'POST',
                 headers: {
@@ -113,10 +114,7 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Bot Response:', data.bot_response);
                 appendMessage('bot', data.bot_response);
-                
-                // Play audio response
                 playAudio(data.audio_data);
             })
             .catch(error => {
@@ -125,7 +123,25 @@
 
             document.getElementById('user-input').value = '';
         }
-    
+
+        function startRecording() {
+            fetch('/process_voice', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.bot_response !== 'Could not understand audio') {
+                    appendMessage('user', data.bot_response);
+                    playAudio(data.audio_data);
+                } else {
+                    alert('Could not understand your voice, please try again.');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching or parsing response:', error);
+            });
+        }
+
         function appendMessage(sender, message) {
             var chatHistory = document.getElementById('chat-history');
             var messageElement = document.createElement('div');
@@ -136,9 +152,6 @@
         }
 
         function playAudio(audioData) {
-            console.log('Received Audio Data:', audioData);
-
-            // Decode base64 audio data and play
             var audioPlayer = document.getElementById('audio-response');
             audioPlayer.src = 'data:audio/mp3;base64,' + audioData;
             audioPlayer.play();

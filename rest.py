@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, session
 import json 
 import numpy as np
 from tensorflow import keras
@@ -8,8 +8,10 @@ import pickle
 from gtts import gTTS
 import base64
 from io import BytesIO
+import speech_recognition as sr
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Set a secret key for session management
 
 # Load data
 with open(r'E:\new\dataset\voicebot.json') as file:
@@ -50,6 +52,23 @@ def text_to_speech(text):
     audio_bytes.seek(0)
     return base64.b64encode(audio_bytes.read()).decode()
 
+# Function to convert speech to text
+def speech_to_text():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Speak:")
+        audio = r.listen(source)
+    try:
+        user_input = r.recognize_google(audio)
+        print("You said:", user_input)
+        return user_input
+    except sr.UnknownValueError:
+        print("Could not understand audio")
+        return ""
+    except sr.RequestError as e:
+        print("Could not request results; {0}".format(e))
+        return ""
+
 # Routes
 @app.route('/')
 def home():
@@ -67,6 +86,23 @@ def process_text():
     audio_data = text_to_speech(bot_response)
     
     return jsonify({'bot_response': bot_response, 'audio_data': audio_data})
+
+@app.route('/process_voice', methods=['POST'])
+def process_voice():
+    user_input = speech_to_text()
+    if user_input:
+        session['user_input'] = user_input  # Store recognized text in session
+        bot_response = get_bot_response(user_input)
+        chat_history.append({"User": user_input, "ChatBot": bot_response})
+        print(f"User Input (Voice): {user_input}")
+        print(f"Bot Response: {bot_response}")
+        
+        # Convert bot response to speech using gTTS
+        audio_data = text_to_speech(bot_response)
+        
+        return jsonify({'bot_response': bot_response, 'audio_data': audio_data})
+    else:
+        return jsonify({'bot_response': 'Could not understand audio', 'audio_data': ''})
 
 @app.route('/chat_history', methods=['GET'])
 def chat_history_route():
