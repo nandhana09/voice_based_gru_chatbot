@@ -5,9 +5,9 @@ from tensorflow import keras
 from sklearn.preprocessing import LabelEncoder
 import random
 import pickle
-import speech_recognition as sr
 from gtts import gTTS
-import io
+import base64
+from io import BytesIO
 
 app = Flask(__name__)
 
@@ -42,25 +42,13 @@ def get_bot_response(user_input):
         if i['tag'] == tag:
             return np.random.choice(i['responses'])
 
-# Function to convert speech to text
-def speech_to_text(audio_data):
-    recognizer = sr.Recognizer()
-    audio = sr.AudioData(bytes(audio_data, 'ISO-8859-1'), sample_rate=16000, sample_width=2)
-    try:
-        user_input = recognizer.recognize_google(audio)
-        return user_input
-    except sr.UnknownValueError:
-        return ""
-    except sr.RequestError as e:
-        return ""
-
 # Function to convert text to speech using gTTS
-def text_to_speech(output):
-    audio_bytes = io.BytesIO()
-    tts = gTTS(text=output, lang='en')
+def text_to_speech(text):
+    tts = gTTS(text=text, lang='en')
+    audio_bytes = BytesIO()
     tts.write_to_fp(audio_bytes)
     audio_bytes.seek(0)
-    return audio_bytes
+    return base64.b64encode(audio_bytes.read()).decode()
 
 # Routes
 @app.route('/')
@@ -72,23 +60,14 @@ def process_text():
     user_input = request.form['user_input']
     bot_response = get_bot_response(user_input)
     chat_history.append({"User": user_input, "ChatBot": bot_response})
-    audio_bytes = text_to_speech(bot_response)
     print(f"User Input: {user_input}")
     print(f"Bot Response: {bot_response}")
-    return jsonify({'bot_response': bot_response, 'audio': audio_bytes.getvalue().decode('ISO-8859-1')})
+    
+    # Convert bot response to speech using gTTS
+    audio_data = text_to_speech(bot_response)
+    
+    return jsonify({'bot_response': bot_response, 'audio_data': audio_data})
 
-@app.route('/speech_to_text', methods=['POST'])
-def speech_to_text_route():
-    audio_data = request.data
-    user_input = speech_to_text(audio_data)
-    bot_response = get_bot_response(user_input)
-    chat_history.append({"User": user_input, "ChatBot": bot_response})
-    audio_bytes = text_to_speech(bot_response)
-    print(f"Speech to Text: {user_input}")
-    print(f"Bot Response: {bot_response}")
-    return jsonify({'user_input': user_input, 'bot_response': bot_response, 'audio': audio_bytes.getvalue().decode('ISO-8859-1')})
-
-# Display chat history
 @app.route('/chat_history', methods=['GET'])
 def chat_history_route():
     return jsonify({'chat_history': chat_history})

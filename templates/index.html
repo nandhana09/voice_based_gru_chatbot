@@ -42,10 +42,12 @@
 
         .user {
             text-align: right;
+            color: #6a5acd;
         }
 
         .bot {
             text-align: left;
+            color: #4b0082;
         }
 
         .input-container {
@@ -74,10 +76,6 @@
         button:hover {
             background-color: #4b0082;
         }
-
-        #audio-player {
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -87,10 +85,13 @@
             <!-- Chat history will be inserted here -->
         </div>
         <div class="input-container">
-            <input type="text" id="user-input" placeholder="You" autocomplete="off">
+            <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
             <button onclick="sendMessage()">Send</button>
         </div>
-        <audio id="audio-player" controls></audio>
+        <div class="input-container">
+            <button id="record-btn" onclick="startRecording()">Record</button>
+            <audio id="audio-response" controls hidden></audio>
+        </div>
     </div>
 
     <script>
@@ -112,9 +113,11 @@
             })
             .then(response => response.json())
             .then(data => {
-                console.log('Server Response:', data);
+                console.log('Bot Response:', data.bot_response);
                 appendMessage('bot', data.bot_response);
-                playAudio(data.audio);
+                
+                // Play audio response
+                playAudio(data.audio_data);
             })
             .catch(error => {
                 console.error('Error fetching or parsing response:', error);
@@ -122,19 +125,21 @@
 
             document.getElementById('user-input').value = '';
         }
-
+    
         function appendMessage(sender, message) {
             var chatHistory = document.getElementById('chat-history');
             var messageElement = document.createElement('div');
             messageElement.classList.add('chat', sender);
-            messageElement.innerText = message;
+            messageElement.textContent = message;
             chatHistory.appendChild(messageElement);
             chatHistory.scrollTop = chatHistory.scrollHeight;
         }
 
         function playAudio(audioData) {
             console.log('Received Audio Data:', audioData);
-            var audioPlayer = document.getElementById('audio-player');
+
+            // Decode base64 audio data and play
+            var audioPlayer = document.getElementById('audio-response');
             audioPlayer.src = 'data:audio/mp3;base64,' + audioData;
             audioPlayer.play();
         }
