@@ -121,7 +121,7 @@
                 console.error('Error fetching or parsing response:', error);
             });
 
-            document.getElementById('user-input').value = '';
+            document.getElementById('user-input').value = ''; 
         }
 
         function startRecording() {
@@ -150,7 +150,7 @@
             chatHistory.appendChild(messageElement);
             chatHistory.scrollTop = chatHistory.scrollHeight;
         }
-
+        
         function playAudio(audioData) {
             var audioPlayer = document.getElementById('audio-response');
             audioPlayer.src = 'data:audio/mp3;base64,' + audioData;
