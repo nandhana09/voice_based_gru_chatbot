@@ -8,8 +8,9 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #6a5acd, #ffffff);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Use a different font for body text */
+            background: linear-gradient(to bottom right, #4b0082, #000000); /* Indigo to black gradient */
+            color: #ffffff; /* White text for better readability */
             height: 100vh;
             display: flex;
             justify-content: center;
@@ -20,34 +21,62 @@
             max-width: 400px;
             width: 100%;
             padding: 20px;
-            border: 1px solid #ccc;
+            border: 1px solid #333;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            background: linear-gradient(to bottom right, #ffffff, #6a5acd);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            background: #000000; /* Dark gray background */
         }
 
         h1 {
             text-align: center;
-            color: #fff;
+            color: #ffffff; /* White heading text */
             margin-bottom: 20px;
+            font-family: 'Arial Black', sans-serif; /* Change font for the title */
         }
 
-        .chat {
-            margin-bottom: 20px;
+        /* Chat message container */
+        .message-container {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px; /* Spacing between message containers */
+        }
+
+        /* User's message container */
+        .user-message {
+            align-self: flex-end; /* Right-align user message */
+            background-color: #4b0082; /* Indigo chat bubble background */
+            color: #ffffff;
+            border-radius: 10px;
             padding: 10px;
-            border-radius: 5px;
-            color: #333;
-            background-color: #f0f0f0;
+            max-width: 70%; /* Limit width of message */
+            margin-bottom: 5px; /* Spacing between messages */
         }
 
-        .user {
-            text-align: right;
-            color: #6a5acd;
+        /* Bot's response container */
+        .bot-message {
+            align-self: flex-start; /* Left-align bot message */
+            background-color: #000000; /* Black chat bubble background */
+            color: #ffffff;
+            border-radius: 10px;
+            padding: 10px;
+            max-width: 70%; /* Limit width of message */
+            margin-bottom: 5px; /* Spacing between messages */
         }
 
-        .bot {
-            text-align: left;
-            color: #4b0082;
+        /* User and bot icons */
+        .user-icon::before,
+        .bot-icon::before {
+            font-family: 'Segoe UI Emoji', 'Segoe UI Symbol'; /* Use system emoji font */
+            font-size: 20px;
+            margin-right: 5px;
+        }
+
+        .bot-icon::before {
+            content: "\1F916"; /* Robot emoji for bot */
+        }
+
+        .user-icon::before {
+            content: "\1F464"; /* Person emoji for user */
         }
 
         .input-container {
@@ -59,9 +88,11 @@
         input[type="text"] {
             flex: 1;
             padding: 10px;
-            border: 1px solid #ccc;
+            border: 1px solid #333;
             border-radius: 5px 0 0 5px;
             outline: none;
+            background-color: #333; /* Dark input field */
+            color: #ffffff;
         }
 
         button {
@@ -69,25 +100,25 @@
             border: none;
             border-radius: 0 5px 5px 0;
             cursor: pointer;
-            color: #fff;
-            background-color: #6a5acd;
+            color: #ffffff;
+            background-color: #4b0082; /* Indigo button background */
             transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #4b0082;
+            background-color: #2e0854; /* Darker indigo on hover */
         }
 
         #record-btn {
             margin-left: 10px;
-            background-color: #4caf50;
+            background-color: #4caf50; /* Green record button */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>ChatBot</h1>
-        <div id="chat-history" class="chat">
+        <h1>HealthBot</h1>
+        <div id="chat-history">
             <!-- Chat history will be inserted here -->
         </div>
         <div class="input-container">
@@ -100,38 +131,41 @@
 
     <script>
         function sendMessage() {
-            var userInput = document.getElementById('user-input').value.trim();
-            if (userInput === '') return;
+    var userInput = document.getElementById('user-input').value.trim();
+    if (userInput === '') return;
 
-            appendMessage('user', userInput);
+    appendMessage('user', userInput);  // Display user input in the chat
 
-            fetch('/process_text', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'user_input=' + userInput,
-            })
-            .then(response => response.json())
-            .then(data => {
-                appendMessage('bot', data.bot_response);
-                playAudio(data.audio_data);
-            })
-            .catch(error => {
-                console.error('Error fetching or parsing response:', error);
-            });
+    fetch('/process_text', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: 'user_input=' + userInput,
+    })
+    .then(response => response.json())
+    .then(data => {
+        appendMessage('bot', data.bot_response);  // Display bot response in the chat
+        playAudio(data.audio_data);
+    })
+    .catch(error => {
+        console.error('Error fetching or parsing response:', error);
+    });
 
-            document.getElementById('user-input').value = ''; 
-        }
+    document.getElementById('user-input').value = ''; 
+}
 
-        function startRecording() {
+
+
+function startRecording() {
             fetch('/process_voice', {
                 method: 'POST'
             })
             .then(response => response.json())
             .then(data => {
-                if (data.bot_response !== 'Could not understand audio') {
-                    appendMessage('user', data.bot_response);
+                if (data.user_input !== 'Could not understand audio') {
+                    appendMessage('user', data.user_input);  // Display user's speech-to-text input
+                    appendMessage('bot', data.bot_response); // Display bot response
                     playAudio(data.audio_data);
                 } else {
                     alert('Could not understand your voice, please try again.');
@@ -144,10 +178,27 @@
 
         function appendMessage(sender, message) {
             var chatHistory = document.getElementById('chat-history');
+            var messageContainer = document.createElement('div');
             var messageElement = document.createElement('div');
-            messageElement.classList.add('chat', sender);
+            var iconElement = document.createElement('span');
+
+            iconElement.classList.add(sender === 'user' ? 'user-icon' : 'bot-icon');
             messageElement.textContent = message;
-            chatHistory.appendChild(messageElement);
+            messageElement.style.wordWrap = 'break-word'; /* Wrap long messages */
+            messageElement.style.maxWidth = '100%'; /* Ensure message fits container */
+            messageContainer.classList.add('message-container');
+
+            if (sender === 'user') {
+                messageContainer.classList.add('user-message');
+                messageContainer.appendChild(messageElement);
+                messageContainer.appendChild(iconElement);
+            } else if (sender === 'bot') {
+                messageContainer.classList.add('bot-message');
+                messageContainer.appendChild(iconElement);
+                messageContainer.appendChild(messageElement);
+            }
+
+            chatHistory.appendChild(messageContainer);
             chatHistory.scrollTop = chatHistory.scrollHeight;
         }
         

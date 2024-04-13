@@ -91,18 +91,18 @@ def process_text():
 def process_voice():
     user_input = speech_to_text()
     if user_input:
-        session['user_input'] = user_input  # Store recognized text in session
+        session['user_input'] = user_input
         bot_response = get_bot_response(user_input)
         chat_history.append({"User": user_input, "ChatBot": bot_response})
         print(f"User Input (Voice): {user_input}")
         print(f"Bot Response: {bot_response}")
         
-        # Convert bot response to speech using gTTS
         audio_data = text_to_speech(bot_response)
         
-        return jsonify({'bot_response': bot_response, 'audio_data': audio_data})
+        return jsonify({'user_input': user_input, 'bot_response': bot_response, 'audio_data': audio_data})
     else:
-        return jsonify({'bot_response': 'Could not understand audio', 'audio_data': ''})
+        return jsonify({'user_input': 'Could not understand audio', 'bot_response': 'Could not understand audio', 'audio_data': ''})
+
 
 @app.route('/chat_history', methods=['GET'])
 def chat_history_route():
